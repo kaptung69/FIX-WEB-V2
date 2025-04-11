@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charse t="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAP-H Cars</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoIb5IjPpD-7ffTtLx69M5uf9TRTibcj9osw&s" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header img {
+            max-width: 120px; /* Adjust the size of the logo */
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Align items vertically */
+            background-color: #000;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .nav-bar a {
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s ease;
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+        .nav-bar a:hover {
+            background-color: #333;
+            color: #6161616c;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px; /* Added space between links */
+        }
+
+        .dropdown button {
+            background-color: rgba(0, 255, 8, 0.589);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em; /* Same font size as nav links */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 1em;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .upgrade-form {
+            text-align: center;
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: 40px auto;
+            border: 2px solid #ddd;
+        }
+
+        .upgrade-form h2 {
+            color: #333;
+            font-size: 2.5em;
+        }
+
+        .upgrade-form img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .upgrade-form ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .upgrade-form li {
+            font-size: 1.4em;
+            font-weight: bold;
+            background: #fff;
+            color: #333;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            width: 85%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="data:image/png;base64,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">
+        <h1>KAP-H Cars</h1>
+        <p>Innovation, Performance, Quality, and Speed</p>
+    </header>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    <div class="nav-bar">
+        
+        <a href="KT WEBSITES/honda civic.html">New Cars model (2025)</a>
+        <a href="KT WEBSITES/honda civic.html">FAQ Section</a>
+        <a href="KT WEBSITES/DealerShip.html">DealerShip</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmGX5dNhnnxVYHHlgf1Wt_H_INoQYn3A5eooAVtqEuKNhFDg/viewform?usp=dialog">Contact us</a>
+
+        <!-- Translation Dropdown -->
+        <div class="dropdown">
+            <button>Translation</button>
+            <div class="dropdown-content">
+                
+                <a href="KT WEBSITES/KapTuang - CHINA.html">MANDRID</a>
+                <a href="KT WEBSITES/KapTuang - SPANISH.html">SPANISH</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <section>
+        <h2>Discover KAP-H Cars</h2>
+        <p>Explore the latest vehicles designed to provide exceptional performance, reliability, and value.</p>
+    </section>
+
+    <form class="upgrade-form">
+        <h2>Latest Car Upgrades</h2>
+        <img src="https://tse3.mm.bing.net/th?id=OIP.czZ08Pgd9jMckzPuRM64rgHaEK&w=200&h=112&c=7" alt="New KAP-H Car">
+        <ul>
+            <li><strong>Model:</strong> KAP-H Hybrid GT</li>
+            <li><strong>Power:</strong> 250-horsepower turbocharged engine</li>
+            <li><strong>Acceleration:</strong> 0 to 60mph in 5.5 seconds</li>
+            <li><strong>Price:</strong> Starting at $30,500</li>
+        </ul>
+    </form>
+
+    <footer>
+        <p>&copy; 2025 KAP-H Cars. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
